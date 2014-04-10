@@ -15,6 +15,7 @@ object frmMain: TfrmMain
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
+  OnShow = FormShow
   DesignSize = (
     681
     336)
@@ -54,6 +55,7 @@ object frmMain: TfrmMain
     PopupMenu = PopupMenu1
     TabOrder = 2
     ViewStyle = vsReport
+    OnAdvancedCustomDrawItem = ListView1AdvancedCustomDrawItem
     OnColumnClick = ListView1ColumnClick
     OnContextPopup = ListView1ContextPopup
     OnData = ListView1Data
@@ -108,7 +110,12 @@ object frmMain: TfrmMain
     BevelOuter = bvNone
     TabOrder = 4
     object Splitter1: TSplitter
-      Left = 188
+      Left = 148
+      Top = 0
+      Height = 32
+    end
+    object Splitter2: TSplitter
+      Left = 356
       Top = 0
       Height = 32
     end
@@ -116,7 +123,7 @@ object frmMain: TfrmMain
       AlignWithMargins = True
       Left = 8
       Top = 4
-      Width = 177
+      Width = 137
       Height = 23
       Margins.Left = 8
       Margins.Top = 4
@@ -128,16 +135,30 @@ object frmMain: TfrmMain
     end
     object edtFileMask: TEdit
       AlignWithMargins = True
-      Left = 194
+      Left = 154
       Top = 4
-      Width = 316
+      Width = 199
+      Height = 23
+      Margins.Top = 4
+      Margins.Bottom = 5
+      Align = alLeft
+      TabOrder = 1
+      Text = 'ssleay*.dll;libeay*.dll;openssl*.exe'
+      TextHint = 'File Mask (e.g.  "ssl*.dll;*ssl*.exe")'
+    end
+    object edtPattern: TEdit
+      AlignWithMargins = True
+      Left = 362
+      Top = 4
+      Width = 148
       Height = 23
       Margins.Top = 4
       Margins.Bottom = 5
       Align = alClient
-      TabOrder = 1
-      Text = 'ssleay*.dll;libeay*.dll;openssl*.exe'
-      TextHint = 'File Mask (e.g.  "ssl*.dll;*ssl*.exe")'
+      TabOrder = 2
+      Text = '(1.0.1[a-f])|(1.0.2)'
+      TextHint = 'RegExp Pattern (e.g. "1\.0\.1[a-f]")'
+      OnChange = edtPatternChange
     end
   end
   object JvSearchFiles1: TJvSearchFiles

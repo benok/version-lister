@@ -5,6 +5,8 @@ interface
 uses
   System.SysUtils,
   System.Classes,
+  System.RegularExpressions,
+
   Generics.Collections,
   Generics.Defaults,
 
@@ -59,14 +61,21 @@ type
     ShowProperties1: TMenuItem;
     pnlCond: TPanel;
     Splitter1: TSplitter;
+    Splitter2: TSplitter;
+    edtPattern: TEdit;
     procedure FormDestroy(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnAbortClick(Sender: TObject);
     procedure btnSearchClick(Sender: TObject);
+    procedure edtPatternChange(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormShow(Sender: TObject);
     procedure JvSearchFiles1BeginScanDir(Sender: TObject; const AName: string);
     procedure JvSearchFiles1FindFile(Sender: TObject; const AName: string);
     procedure JvSearchFiles1Progress(Sender: TObject);
+    procedure ListView1AdvancedCustomDrawItem(Sender: TCustomListView; Item:
+        TListItem; State: TCustomDrawState; Stage: TCustomDrawStage; var
+        DefaultDraw: Boolean);
     procedure OpenFolder1Click(Sender: TObject);
     procedure ListView1ColumnClick(Sender: TObject; Column: TListColumn);
     procedure ListView1ContextPopup(Sender: TObject; MousePos: TPoint; var Handled: Boolean);
@@ -82,6 +91,8 @@ type
     FSearchingFolder: string;
     FPrevSortColumn: Integer;
     FVersionInfoList: TObjectList<TFileVersionInfo>;
+    FRegEx: TRegEx;
+    FHasValidRegEx: Boolean;
     procedure ListViewColumnAutoResize(const Sender: TListView; ColNum: Integer);
     function GetCaption(const ItemIndex: Integer; ColNum: Integer): string;
   public
@@ -95,6 +106,8 @@ implementation
 
 uses
   System.DateUtils,
+  System.RegularExpressionsCore,
+  Vcl.Graphics,
   ListViewUtil,
   ShellUtil;
 
@@ -122,6 +135,8 @@ begin
     FSearchingFolder := '';
     FPrevSearchingFolder := '';
     FAborted := False;
+    if FHasValidRegEx then
+      FRegEx := TRegEx.Create(edtPattern.Text);
 
     FVersionInfoList.Clear;
     ListView1.Clear;
@@ -151,6 +166,44 @@ begin
     btnAbort.Enabled := False; btnAbort.ImageIndex := 3;
     Timer1.Enabled := False;
   end;
+end;
+
+procedure TfrmMain.edtPatternChange(Sender: TObject);
+var
+  ECName: string;
+begin
+  try
+    FRegEx := TRegEx.Create(edtPattern.Text);
+    FHasValidRegEx := True;
+    FRegEx.IsMatch('dummy');
+  except
+    on E: ERegularExpressionError do
+    begin
+      ECName := E.ClassName;
+      FHasValidRegEx := False;
+    end
+    else
+      raise;
+  end;
+  if edtPattern.Text = '' then
+  begin
+    edtPattern.Color := clWhite;
+//    edtPattern.Font.Color := clBlack;
+  end
+  else
+  begin
+    if FHasValidRegEx then
+    begin
+      edtPattern.Color := $B6FFB6;
+//      edtPattern.Font.Color := clGreen;
+    end
+    else
+    begin
+      edtPattern.Color := $C9C9FF;
+//      edtPattern.Font.Color := clRed;
+    end;
+  end;
+  ListView1.Refresh;
 end;
 
 procedure TfrmMain.JvSearchFiles1BeginScanDir(Sender: TObject; const AName:
@@ -208,6 +261,7 @@ begin
   ListView1.ReadOnly := True;
   ListView1.RowSelect := True;
   ListView1.ViewStyle := vsReport;
+  ListView1.FullDrag := False; // Need to fix sort to work correctly.
 end;
 
 procedure TfrmMain.FormDestroy(Sender: TObject);
@@ -223,6 +277,11 @@ begin
     btnAbort.Click;
 end;
 
+procedure TfrmMain.FormShow(Sender: TObject);
+begin
+  edtPatternChange(Self);
+end;
+
 function TfrmMain.GetCaption(const ItemIndex: Integer; ColNum: Integer): string;
 var
   Info: TFileVersionInfo;
@@ -235,6 +294,15 @@ begin
   3: Result := Info.CompanyName;
   4: Result := Info.FileDir;
   end;
+end;
+
+procedure TfrmMain.ListView1AdvancedCustomDrawItem(Sender: TCustomListView;
+    Item: TListItem; State: TCustomDrawState; Stage: TCustomDrawStage; var
+    DefaultDraw: Boolean);
+begin
+  if FHasValidRegEx then
+    if FRegEx.IsMatch(FVersionInfoList[Item.Index].ProductVersion) then
+      Sender.Canvas.Font.Color := clRed;
 end;
 
 procedure TfrmMain.ListView1Data(Sender: TObject; Item: TListItem);
