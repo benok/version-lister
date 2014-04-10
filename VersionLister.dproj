@@ -46,6 +46,9 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <VerInfo_Locale>1041</VerInfo_Locale>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <Manifest_File>None</Manifest_File>
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
@@ -57,12 +60,14 @@
         <DCC_K>false</DCC_K>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <VerInfo_MinorVer>7</VerInfo_MinorVer>
+        <VerInfo_MajorVer>0</VerInfo_MajorVer>
+        <VerInfo_Keys>CompanyName=benok;FileDescription=;FileVersion=0.7.0.0;InternalName=;LegalCopyright=(c)2014 benok all right reserved.;LegalTrademarks=;OriginalFilename=;ProductName=VersionLister;ProductVersion=0.8;Comments=Jedi Component Library &amp; Jedi JVCL (MPL License) is used. see https://github.com/project-jedi</VerInfo_Keys>
         <DCC_UsePackage>IndyIPClient;JvGlobus;OpenWireBindingPkgD17;JvMM;JvManagedThreads;DCLClassifiersDB117;dcldklangXE3;dxCoreRS17;DBXSqliteDriver;dxThemeRS17;fmx;JvDlgs;IndySystem;JvCrypt;TeeDB;RaizeComponentsVcl;MtxCore417;vclib;inetdbbde;DBXInterBaseDriver;DataSnapCommon;tb2k_d17;PE7_DXE3;JvNet;GLScene_RunTime;pkCindyPackDXE3;JvDotNetCtrls;DbxCommonDriver;cxDataRS17;vclimg;dxServerModeRS17;dbxcds;MetropolisUILiveTile;JvXPCtrls;gpLibDXE3;vcldb;cxExportRS17;vcldsnap;nacInputIntFloatEditSpin_DXE3D;dxGDIPlusRS17;MtxTools417;PegtopCommonDXE3;CustomIPTransport;JvCore;cxLibraryRS17;vclribbon;cxGridRS17;dsnap;IndyIPServer;fmxase;vcl;IndyCore;IndyIPCommon;CloudService;CodeSiteExpressPkg;FmxTeeUI;frxDB17;JvAppFrm;JvDB;JvRuntimeDesign;inetdbxpress;webdsnap;Mitov.Runtime.D17;JclDeveloperTools;JSDialogPack;OpenWireBindingFmxPkgD17;StatCore417;JvDocking;adortl;dwWin7Controls_XE3;JvWizards;MtxTee417;OpenWireLabPkgD17;madBasic_;fs17;frx17;JvHMI;bindcompfmx;JvBands;vcldbx;SignalTool417;SignalCore417;RaizeComponentsVclDb;OpenWireBindingVclPkgD17;rtl;dbrtl;DbxClientDriver;OpenWireBindingDatabasePkgD17;bindcomp;inetdb;dxComnRS17;JvPluginSystem;Tee;JclContainers;Python_XE3;JvCmp;madDisAsm_;JvSystem;xmlrtl;JvTimeFramework;ibxpress;svnui;JvControls;MtxDb417;OpenWirePkgD17;IndyProtocols;DBXMySQLDriver;dxLayoutControlRS17;Classifiers117;vclactnband;bindengine;soaprtl;bindcompdbx;FMXTee;TeeUI;bindcompvcl;dxADOServerModeRS17;JvStdCtrls;Jcl;vclie;JvCustom;JvJans;JvPageComps;JvPrintPreview;cxPageControlRS17;vcltouch;StatTools417;madExcept_;websnap;ManabeDXE3;VclSmp;dxmdsRS17;SpTBXLib_d17;Intraweb;dsnapcon;nacInputIntFloatEditSpinDXE3;inet;fsDB17;fmxobj;JclVcl;JvPascalInterpreter;vclx;frxe17;cxEditorsRS17;svn;fmxdae;bdertl;ClassifiersDB117;VirtualTreesR;ExcelGridDXE3;dbexpress;dxDBXServerModeRS17;dklangXE3;JvBDE;$(DCC_UsePackage)</DCC_UsePackage>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <DCC_UsePackage>IndyIPClient;dxCoreRS17;DBXSqliteDriver;dxThemeRS17;fmx;IndySystem;TeeDB;RaizeComponentsVcl;vclib;DBXInterBaseDriver;DataSnapCommon;tb2k_d17;GLScene_RunTime;DbxCommonDriver;cxDataRS17;vclimg;dxServerModeRS17;dbxcds;gpLibDXE3;vcldb;cxExportRS17;vcldsnap;dxGDIPlusRS17;CustomIPTransport;cxLibraryRS17;cxGridRS17;dsnap;IndyIPServer;fmxase;vcl;IndyCore;IndyIPCommon;inetdbxpress;webdsnap;JSDialogPack;adortl;bindcompfmx;RaizeComponentsVclDb;rtl;dbrtl;DbxClientDriver;bindcomp;inetdb;dxComnRS17;Tee;xmlrtl;ibxpress;IndyProtocols;DBXMySQLDriver;dxLayoutControlRS17;vclactnband;bindengine;soaprtl;bindcompdbx;TeeUI;bindcompvcl;dxADOServerModeRS17;vclie;cxPageControlRS17;vcltouch;websnap;ManabeDXE3;VclSmp;dxmdsRS17;SpTBXLib_d17;dsnapcon;nacInputIntFloatEditSpinDXE3;inet;fmxobj;vclx;cxEditorsRS17;fmxdae;ExcelGridDXE3;dbexpress;dxDBXServerModeRS17;$(DCC_UsePackage)</DCC_UsePackage>
@@ -76,6 +81,9 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
@@ -85,8 +93,9 @@
         <DCC_DebugInformation>false</DCC_DebugInformation>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">

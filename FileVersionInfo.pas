@@ -23,7 +23,7 @@ type
     property FileDir: string read GetFileDir;
     property FilePath: string read GetFilePath;
     property LastModified: TDateTime read FLastModified;
-    //property Info: TJclFileVersionInfo read FInfo;
+    property Info: TJclFileVersionInfo read FInfo;
     property ProductVersion: string read GetProductVersion;
     property CompanyName: string read GetCompanyName;
     constructor Create(const FileName: string);

@@ -111,6 +111,9 @@ uses
   ListViewUtil,
   ShellUtil;
 
+const
+  SAppName = 'VersionLister';
+
 resourcestring
   SDone = 'Done.';
   SAborted = 'Aborted.';
@@ -251,7 +254,16 @@ begin
 end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
+var
+  MyVerInfo: TFileVersionInfo;
 begin
+  MyVerInfo := TFileVersionInfo.Create(Application.ExeName);
+  try
+    Self.Caption := MyVerInfo.Info.ProductName + ' ' + MyVerInfo.ProductVersion;
+  finally
+    MyVerInfo.Free;
+  end;
+
   FPrevSortColumn := -1;
   FVersionInfoList := TObjectList<TFileVersionInfo>.Create;
   ListView1.OnAutoResize := ListViewColumnAutoResize;
