@@ -93,6 +93,9 @@
         <DCC_DebugInformation>false</DCC_DebugInformation>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <VerInfo_MajorVer>0</VerInfo_MajorVer>
+        <VerInfo_Keys>CompanyName=benok;FileDescription=A small tool to list up dll &amp; exe with product version info.;FileVersion=0.8.0.0;InternalName=;LegalCopyright=(c)2014 benok all right reserved.;LegalTrademarks=;OriginalFilename=;ProductName=VersionLister;ProductVersion=0.8;Comments=Jedi Component Library &amp; Jedi JVCL (MPL License) is used. see https://github.com/project-jedi</VerInfo_Keys>
+        <VerInfo_MinorVer>8</VerInfo_MinorVer>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <VerInfo_Locale>1033</VerInfo_Locale>
