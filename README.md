@@ -1,7 +1,9 @@
 VersionLister
 =============
+A small tool to list up dll & exe with product version info.
 
-A small tool to list up dll & exe version. 
-Created to find openssl heartbleed vulnerable dll.
+* Created to find openssl heartbleed bug dlls.
+* You can search files & highlight version with regexp.
+* default pattern is set for hertbleed bug dlls.
 
---benok1@gmail.com
+![ScreenShot](ScreenShot.png)
